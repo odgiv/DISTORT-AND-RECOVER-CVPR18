@@ -80,7 +80,7 @@ class Agent:
 		self.prefix = prefix
 
 		### MIT5K C
-		self.data_dir	= '/hdd2/DATA/MIT5K/C/'
+		self.data_dir	= '/home/sg/data/C/'
 		self.test_count = 63
 
 		self.train_dir	= os.path.join(self.data_dir, 'train')
@@ -385,7 +385,10 @@ class Agent:
 				features=[]
 				deep_features = self.prep.get_feature(raw_data)
 				for i in range(self.batch_size):
-					if self.use_history:
+					if self.use_history:                       
+						#print(deep_features[i].shape)
+						#print(color_features[i].shape)
+						#print(history[i].shape) 
 						features.append(np.concatenate((deep_features[i], color_features[i], history[i]), axis=0))
 					else:
 						features.append(np.concatenate((deep_features[i], color_features[i]), axis=0))
